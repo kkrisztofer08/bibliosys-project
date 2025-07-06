@@ -1,0 +1,18 @@
+<div class="overlay">
+  <div class="dialog zoom-in">
+    <h2>Kölcsönzés</h2>
+    <form (ngSubmit)="onSubmit()" #borrowForm="ngForm">
+      <input type="text" placeholder="Név" [(ngModel)]="borrower.name" name="name" required>
+      <input type="date" placeholder="Kezdés" [(ngModel)]="borrower.startDate" name="startDate" required>
+      <input type="date" placeholder="Vége" [(ngModel)]="borrower.endDate" name="endDate" required>
+      <input type="text" [(ngModel)]="borrower.bookTitle" name="bookTitle" disabled>
+      <input type="text" [(ngModel)]="borrower.bookAuthor" name="bookAuthor" disabled>
+      <input type="text" placeholder="Telefonszám" [(ngModel)]="borrower.phone" name="phone" required>
+      <input type="email" placeholder="Email" [(ngModel)]="borrower.email" name="email" required>
+      <button type="submit">OK</button>
+    </form>
+    <div class="button-group">
+      <button mat-button color="warn" type="button" (click)="onCancel()">Mégsem</button>
+    </div>
+  </div>
+</div>

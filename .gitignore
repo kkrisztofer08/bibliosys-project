@@ -1,0 +1,13 @@
+# Frontend (Angular)
+library-frontend/node_modules/
+library-frontend/dist/
+
+# Backend (Spring Boot)
+library-management/target/
+library-management/.idea/
+library-management/.mvn/
+
+# Általános
+*.log
+.DS_Store
+.env

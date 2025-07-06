@@ -1,0 +1,16 @@
+- Frontend oldalon legyen úgy a Dashboard felület ahogy a képen látható, bal oldalt legyen egy menüsáv a következő opciókkal +
+"Könyvtárban lévő könyvek", "Kölcsönbe adott könyvek", "Beállítások", "Kilépés" és a jobb oldalon jelenik majd meg a tartalom, de ezt majd később, előbb legyen meg a felület. Baloldali menüsáv tetején lehetne a "BiblioSys" felirat
+A "Kilépés"-re a rákattint a felhasználó, akkor léptesse ki, és irányítsa vissza a Login felületre. Abban a stílusban csináld meg mint a login felületet korábban. Itt a styles.scss tartalma ha kell:
+
+
+
+- Azt kéne megcsinálni, hogy ha felhasználó rákattint a "Kölcsönzés" gombra, akkor a következő dolog történjen. Frontend oldalon homályosódjon el az Dashboard, majd jöjjön be "Zoom In" animációval egy kis ablak amiben vannak input mezők és a végén egy "OK" gomb. 
+Itt a felhasználó fel tudja vinni, hogy kinek akarja kölcsönözni az adott könyvet, mikor kölcsönzi neki, meddig kölcsönzi neki, mit kölcsönöz neki (ez alapból legyen kitöltve azzal a könyv szerzőjével és címével amire rákattintott korábban táblában az adott sorban "Kölcsönzés" gombra), a kölcsönző telefonszáma, a kölcsönző email címe.
+Az adatok kitöltése után az "OK" gombra rákattintva az ablak bezárul és visszaadja a Dashboard felületet.
+Backend oldalon legyen egy új "Kölcsönző" entitás (név, kölcsönzés dátuma, meddig kölcsönzi, kölcsönzött könyv szerzője, kölcsönzött könyv címe, telefonszám, email cím).
+Amikor a felhasználó rámegy az "OK" gombra, akkor a backend oldalon az történjen, hogy beleírja a megadott adatokat egy új "borrower" táblába az adatbázisban. A book táblában a "borrowed" érték pedig legyen "true".
+
+
+- A következő funkció a "Kölcsönbe adott könyvek" lenne. Ha rákattint a felhasználó akkor a Dashboard-on, akkor betölt egy ugyanolyan felületet mint a Dashboard annyi különbséggel,
+hogy most az oldal jobb részén nem a Book táblát tölti be, hanem a Borrower táblát az adatbázisból és a "Kölcsönzés" gomb helyett "Visszavétel" gomb legyen. Ha rákattint a felhasználó, akkor
+az adott sort törölje a Borrower táblából és a Book táblába a borrowed oszlop értékét tegye false-ra ott, ahol a könyv szerzője és címe egyeznek.

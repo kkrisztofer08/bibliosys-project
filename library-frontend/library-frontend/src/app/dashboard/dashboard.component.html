@@ -1,0 +1,55 @@
+<div class="dashboard-container">
+  <aside class="sidebar">
+    <h1>BiblioSys</h1>
+    <nav>
+      <ul>
+        <li><a (click)="refreshPage()">Könyvtárban lévő könyvek</a></li>
+        <li><a (click)="toBorrowedbooks()">Kölcsönbe adott könyvek</a></li>
+        <li><a (click)="logout()">Kilépés</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <section class="content">
+    <div class="book-list">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ISBN</th>
+            <th>Kiadás év</th>
+            <th>Cím</th>
+            <th>Szerző</th>
+            <th>Kölcsönözve</th>
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books">
+            <td>{{ book.id }}</td>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.publication_year }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.borrowed ? 'Igen' : 'Nem' }}</td>
+            <td>
+              <button
+                (click)="openDialog(book)"
+                [disabled]="book.borrowed"
+              >
+                Kölcsönzés
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <app-borrow-dialog
+  *ngIf="showDialog"
+  [book]="selectedBook"
+  (close)="closeDialog()"
+  (submitted)="onBorrowSubmitted()"
+  >
+  </app-borrow-dialog>
+</div>
